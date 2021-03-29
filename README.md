@@ -16,6 +16,8 @@ This is a Proof-of-Concept application. It doesn't have a login/authentication m
 
 You will need a PCI-enabled Twilio account and a Stripe test account. Follow the steps in [this tutorial](https://www.twilio.com/docs/voice/tutorials/how-capture-your-first-payment-using-pay) to create a Stripe account and configure your Twilio account to connect to it.
 
+NOTE: If you already have a payment connector setup, make sure the Unique Name is set to "Default" as this app does not specify a Pay Connector. For more details see here the guide above.
+
 This particular app was designed to be used with an Ngrok tunnel, so you will also need an [Ngrok](https://ngrok.com/) account. Otherwise, you will have to host it at a location accessible from the Internet.
 
 ## Installation
