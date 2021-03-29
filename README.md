@@ -6,7 +6,7 @@ _A simple demo of Agent-Assisted Pay_
 
 This repo contains a simple demo of Agent-Assisted Pay, consisting of a one-page web app, and a server component running on Python/Flask. Here's a sample screenshot:
 
-<img src="https://code.hq.twilio.com/rwelbourn/AgentPay/blob/master/images/Agent_Pay_screenshot.jpg" width=500>
+<img src="/images/Agent_Pay_screenshot.jpg" width=500>
 
 The demonstration consists of a customer making a call to a Twilio phone number whose voice URL points to the server app; the call is forwarded to the phone of a party playing the role of the agent; and the agent enters payment amounts in the web app. When prompted, the customer enters their credit card number, expiry date and security code using their phone's keypad.
 
@@ -76,7 +76,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 
 With that URL, you can now configure the Twilio phone number:
 
-![Configuration screenshot](https://code.hq.twilio.com/rwelbourn/AgentPay/blob/master/images/Twilio_config.jpg)
+![Configuration screenshot](images/TwilioNumberExample.png)
 
 Here we see our Ngrok tunnel URL, with a parameter `Fwd` which holds the agent's URL-encoded forwarding number.
 
@@ -126,7 +126,7 @@ Commands from the client to `initiate`, `update`, `submit` and `cancel` transact
 
 The web page logic handles the entire state of the transaction, and is based around event handlers for button presses and field updates, as well as call events and transaction results received from server over the websocket connection. Commands to process transactions are also sent as JSON over the websocket to the server. The event handlers drive a state machine represented by the following diagram:
 
-<img src="https://code.hq.twilio.com/rwelbourn/AgentPay/blob/master/images/Agent%20Pay%20State%20Machine.jpeg" width="500">
+<img src="/images/AgentPayStateMachine.jpeg" width="500">
 
 The state machine is codified in [this table](https://docs.google.com/spreadsheets/d/1NOX19Hy0S9NoatZk6ya3XgirElpNwvn-fi0ZRSxtxVk/edit#gid=0).
 
@@ -136,7 +136,7 @@ Once the app is running, share your screen and call the demo number to engage in
 
 1. Call the app's number, and note that the caller id displays in the web page. You can have the JavaScript console window open to show the events being processed:
 
-![JavaScript console](https://code.hq.twilio.com/rwelbourn/AgentPay/blob/master/images/Agent_Pay_console.jpg)
+![JavaScript console](images/Agent_Pay_console.jpg)
 
 2. Answer the call, muting the receiver to avoid feeback.
 3. Enter an amount and a tip in the text boxes. Note how this unlocks the 'Prompt' button, and the use of the 'Clear' button.
@@ -144,7 +144,7 @@ Once the app is running, share your screen and call the demo number to engage in
 5. Show that incorrectly formatted card numbers, dates or security codes will result in an error message and a prompt to re-enter the incorrect item.
 6. Click on 'Submit' to submit the transaction for payment, and note the confirmation code that is returned from Stripe. Show that the test transactions were processed on Stripe, by visiting [this page](https://dashboard.stripe.com/test/payments).
 
-![Stripe dashboard](https://code.hq.twilio.com/rwelbourn/AgentPay/blob/master/images/Stripe_dashboard.jpg)
+![Stripe dashboard](/images/Stripe_dashboard.jpg)
 
 7. Experiment with card numbers that will return [error codes](https://stripe.com/docs/testing#cards-responses).
 8. Click on 'Clear' when wrapping up to enter a new transaction.
