@@ -1,0 +1,14 @@
+certifi==2020.6.20
+chardet==3.0.4
+idna==2.10
+PyJWT==1.7.1
+pytz==2020.1
+requests==2.24.0
+six==1.15.0
+twilio==6.54.0
+urllib3==1.25.11
+Flask-SocketIO==4.3.1
+python-engineio==3.13.2
+python-socketio==4.6.0
+eventlet==0.30.2
+Flask==1.1.2

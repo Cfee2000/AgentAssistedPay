@@ -1,0 +1,12 @@
+__pycache__/
+
+#dependencies
+/venv
+
+#debugger
+/.vscode
+
+#local notes
+notes.txt
+tester.py 
+
