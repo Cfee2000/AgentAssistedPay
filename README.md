@@ -10,7 +10,7 @@ This repo contains a simple demo of Agent-Assisted Pay, consisting of a one-page
 
 The demonstration consists of a customer making a call to a Twilio phone number whose voice URL points to the server app; the call is forwarded to the phone of a party playing the role of the agent; and the agent enters payment amounts in the web app. When prompted, the customer enters their credit card number, expiry date and security code using their phone's keypad.
 
-The app is by no means production-ready: it has no login/authentication mechanism, and can handle only a single-user. Any attempt to run it with multiple clients will end in tears.
+This is a Proof-of-Concept application. It doesn't have a login/authentication mechanism, nor does it attempt to scale to multiple users. This app is a reference point for understanding how Agent Assisted payments on Twilio work and can be conceptualized and built upon when considering a scalable production implementation.
 
 ## Pre-requisites
 
@@ -20,11 +20,7 @@ This particular app was designed to be used with an Ngrok tunnel, so you will al
 
 ## Installation
 
-Clone the repository into the directory containing your projects:
-
-```
-git clone https://code.hq.twilio.com/rwelbourn/AgentPay.git
-```
+Clone this repository into the directory containing your projects:
 
 Navigate into the newly created `AgentPay` directory. If you're using a [Virtual Environment](https://realpython.com/python-virtual-environments-a-primer/), execute the following commands:
 
@@ -33,7 +29,7 @@ python3 -m venv ENV
 source ENV/bin/activate
 ```
 
-Next, install the required Python libraries (`twilio`; must be a recent version with support for Pay):
+Next, install the required Python libraries (please first review these dependencies so you know what is being installed):
 
 ```
 pip install -r requirements.txt
@@ -59,13 +55,6 @@ The above credentials (Account SID and Auth Token) can be found on your Twilio a
 Run Ngrok in one terminal session, using Flask's default port. Make a note of the forwarding URL generated:
 
 ```
-$ ngrok http 5000
-ngrok by @inconshreveable                                                                     (Ctrl+C to quit)
-
-Session Status                online
-Account                       Twilio (Plan: Twilio)
-Version                       2.3.35
-Region                        United States (us)
 Web Interface                 http://127.0.0.1:4040
 Forwarding                    http://8273aee782d3.ngrok.io -> http://localhost:5000
 Forwarding                    https://8273aee782d3.ngrok.io -> http://localhost:5000
@@ -86,16 +75,13 @@ Run the server in another terminal session:
 $ python3 app.py
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 436-851-366
+ * Debugger PIN: 436-XXX-XXX
 (69852) wsgi starting up on http://0.0.0.0:5000
 (69852) accepted ('127.0.0.1', 62238)
 (69852) accepted ('127.0.0.1', 62243)
-108.26.192.45,127.0.0.1 - - [23/Oct/2020 19:14:48] "GET / HTTP/1.1" 304 220 0.002525
-108.26.192.45,127.0.0.1 - - [23/Oct/2020 19:14:48] "GET /socket.io/?EIO=3&transport=websocket HTTP/1.1" 200 0 12.514889
-108.26.192.45,127.0.0.1 - - [23/Oct/2020 19:14:49] "GET /static/favicon.ico HTTP/1.1" 200 432526 0.004836
 ```
 
-You can now access the web app at your Ngrok URL (in this example, `https://8273aee782d3.ngrok.io`).
+You can now access the web app at your Ngrok URL.
 
 ## Components
 
@@ -128,9 +114,9 @@ The web page logic handles the entire state of the transaction, and is based aro
 
 <img src="/images/AgentPayStateMachine.jpeg" width="500">
 
-The state machine is codified in [this table](https://docs.google.com/spreadsheets/d/1NOX19Hy0S9NoatZk6ya3XgirElpNwvn-fi0ZRSxtxVk/edit#gid=0).
-
 ## Demo script
+
+NOTE: This script uses Stripe, but you can use any other Twilio Pay Connector (eg. Braintree) - just follow the below instructions and use your specific Pay Connector's test numbers and any other test functionality they offer.
 
 Once the app is running, share your screen and call the demo number to engage in a customer/agent conversation. Using QuickTime to show your iPhone screen is a nice touch, but not necessary.
 
